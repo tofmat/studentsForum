@@ -19,6 +19,11 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function() {
     Route::get('profile', 'Api\UserController@profile');
 });
 
+Route::group(['prefix' => 'questions'], function() {
+    Route::post('/', 'Api\QuestionsController@create')->middleware(['auth:api']);
+    Route::get('/{code}', 'Api\QuestionsController@fetchQuestionsForCourse');
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

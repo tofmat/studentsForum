@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class UsersCourse extends Model
 {
     protected $appends = ['code', 'title'];
-    
+
     protected $fillable = [
         'user_id', 'course_id'
     ];
