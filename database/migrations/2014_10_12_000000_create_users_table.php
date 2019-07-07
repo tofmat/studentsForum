@@ -17,11 +17,11 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('surname');
             $table->string('other_names');
+            $table->string('password');
             $table->string('reg_no');
             $table->integer('school_id');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('token');
+            $table->string('token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

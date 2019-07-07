@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\School\School;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'surname', 'other_names',  'password', 'reg_no', 'school_id', 'email',
     ];
 
     /**
@@ -36,4 +37,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function school() {
+        return $this->belongsTo(School::class);
+    }
 }
