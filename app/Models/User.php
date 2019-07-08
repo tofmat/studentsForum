@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'surname', 'other_names',  'password', 'reg_no', 'school_id', 'email',
+        'questions_count', 'answers_count'
     ];
 
     /**
@@ -64,5 +65,12 @@ class User extends Authenticatable
 
     public function getFullName() {
         return $this->surname." ".$this->other_names;
+    }
+
+    public function getAnswersCountAttribute() {
+        return Answer::where('user_id', '=', $this->id)->count();
+    }
+    public function getQuestionsCountAttribute() {
+        return Question::where('user_id', '=', $this->id)->count();
     }
 }

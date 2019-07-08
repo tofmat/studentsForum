@@ -43,16 +43,17 @@
   <div class="panel-pop" id="signup" style="overflow: auto; height: 300px;">
     <h2>List of Courses<i class="icon-remove"></i></h2>
     <div class="form-style form-style-3">
-      <ul class="related-posts">
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-      </ul>
-      <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Courses</a>
+        <form action="{{route('user.update-courses')}}" method="post">
+        @if (\App\Models\Course::all() != null)
+          @foreach (\App\Models\Course::all() as $course)
+            <li class="related-item button" style="color: black;">
+              <input type="checkbox" name="courses[]" href="#" value="{{$course->id}}" />
+              {{$course->code}}
+            </li>
+          @endforeach
+        @endif
+      <input type="submit" class="load-questions" value="Save" />
+        </form>
     </div>
   </div><!-- End signup -->
 
@@ -74,7 +75,7 @@
   </div><!-- End header-top -->
   <header id="header" class="index-no-box">
     <section class="container clearfix">
-      <div class="logo"><a href="index.html">Quest</a></div>
+      <div class="logo"><a href="/">Quest</a></div>
       <nav class="navigation">
         <ul>
           <li class="current_page_item"><a href="/">Home</a>
@@ -114,11 +115,11 @@
           <div class="widget">
             <h3 class="widget_title">Quick Links</h3>
             <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="ask_question.html">Asked Question</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="{{route('ask')}}">Asked Question</a></li>
               <li><a href="#">About</a></li>
-              <li><a href="cat_question.html">Questions</a></li>
-              <li><a href="user_profile.html">Accounts</a></li>
+              <li><a href="{{route('questions')}}">Questions</a></li>
+              <li><a href="{{route('user.profile')}}">Accounts</a></li>
             </ul>
           </div>
         </div>

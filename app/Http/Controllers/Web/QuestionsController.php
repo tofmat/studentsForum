@@ -68,7 +68,7 @@ class QuestionsController extends BaseController
     }
 
     public function index() {
-        $questions = Question::paginate(20);
+        $questions = Question::orderByDesc('id')->paginate(20);
         $data = [
             'questions' => $questions
         ];

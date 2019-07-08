@@ -13,4 +13,20 @@ class UserController extends BaseController
             return view('users.feed');
         }
     }
+
+    public function profile() {
+        $user = auth()->user();
+        $data = [
+            'user' => $user
+        ];
+        return view('users.profile', $data);
+    }
+
+    public function edit() {
+        $user = auth()->user();
+        $data = [
+            'user' => $user
+        ];
+        return view('users.edit', $data);
+    }
 }

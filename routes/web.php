@@ -27,4 +27,6 @@ Route::post('/question/answer', 'Web\QuestionsController@addAnswer')
 
 Route::get('/feed', 'Web\UserController@feed')->name('feed');
 Route::get('/user/profile', 'Web\UserController@profile')->name('user.profile');
+Route::get('/user/edit', 'Web\UserController@edit')->name('user.edit');
+Route::get('/user/update-courses', 'Web\UserController@updateCourses')->name('user.update-courses');
 
