@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Answer;
 use App\Models\Course;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -40,5 +41,29 @@ class QuestionsController extends Controller
             return $this->sendSuccessResponse($questions);
         }
         return $this->sendSuccessResponse([]);
+    }
+
+    public function view($questionId) {
+        $question = Question::find($questionId);
+        $answers = Answer::where('question_id', '=', $question->id)->get();
+        $question->answers = $answers;
+        if ($question != null) {
+            return $this->sendSuccessResponse($question);
+        }
+        return $this->sendSuccessResponse(new Question());
+    }
+
+    public function addAnswer($questionId, Request $request) {
+        $user = $request->user();
+        $request->validate([
+            'question_id' => 'integer|required',
+            'body' => 'string|required',
+        ]);
+        $answer = new Answer([
+            'user_id' => $user->id,
+            'answer' => $request->input('body'),
+            'question_id' => $questionId
+        ]);
+        $answer->save();
     }
 }

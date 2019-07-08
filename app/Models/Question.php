@@ -15,6 +15,10 @@ class Question extends Model
         'school_id'
     ];
 
+    public function comments() {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function answers() {
         return $this->hasMany(Answer::class);
     }
@@ -24,6 +28,6 @@ class Question extends Model
     }
 
     public function getAnswerCountAttribute() {
-        return 5;
+        return Answer::where('question_id', '=', $this->id)->count();
     }
 }

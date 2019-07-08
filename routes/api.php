@@ -21,6 +21,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:api'], function() {
 
 Route::group(['prefix' => 'questions'], function() {
     Route::post('/', 'Api\QuestionsController@create')->middleware(['auth:api']);
+    Route::get('/{id}', 'Api\QuestionsController@view');
+    Route::post('/{id}/answer', 'Api\QuestionsController@addAnswer')->middleware(['auth:api']);
     Route::get('/{code}', 'Api\QuestionsController@fetchQuestionsForCourse');
 });
 
