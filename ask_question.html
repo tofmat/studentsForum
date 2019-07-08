@@ -25,6 +25,7 @@
 	
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="images/favicon.png">
+	<script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
   
 </head>
 <body>
@@ -234,12 +235,21 @@
 								</div>
 								
 							</div>
-							<div id="form-textarea">
+							<!-- <div id="form-textarea">
 								<p>
 									<label class="required">Details<span>*</span></label>
 <textarea id="froala-editor">Initialize the Froala WYSIWYG HTML Editor on a textarea.</textarea>									<span class="form-description">Type the description thoroughly and in detail .</span>
 								</p>
-							</div>
+							</div> -->
+							<label>Write your question</label>
+							<div>
+							<textarea name="editor1"></textarea> </div>
+							
+							<script>
+									CKEDITOR.replace( 'editor1' );
+							</script>
+							<!-- react div -->
+							<div id="app"></div>
 							<p class="form-submit">
 								<input type="submit" id="publish-question" value="Publish Your Question" class="button color small submit">
 							</p>
@@ -431,7 +441,7 @@
 <script src="js/tags.js"></script>
 <script src="js/jquery.bxslider.min.js"></script>
 <script src="js/custom.js"></script>
-<!-- End js -->
+
 
 </body>
 
