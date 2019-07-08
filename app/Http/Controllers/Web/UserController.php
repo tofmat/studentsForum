@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Web\BaseController;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     public function feed() {
         $user = auth()->user();

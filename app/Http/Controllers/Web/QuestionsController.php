@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Web\BaseController;
 use App\Models\Answer;
 use App\Models\Course;
 use App\Models\Question;
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
-class QuestionsController extends Controller
+class QuestionsController extends BaseController
 {
     public function new() {
         $userCourses = auth()->user()->getCourses();
