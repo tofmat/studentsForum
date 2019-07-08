@@ -51,20 +51,6 @@
         <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
         <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
         <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
-        <li class="related-item button"><h2><a href="#">MTH101</a></h2></li>
       </ul>
       <a href="#" class="load-questions"><i class="icon-refresh"></i>Load More Courses</a>
     </div>
@@ -91,16 +77,16 @@
       <div class="logo"><a href="index.html">Quest</a></div>
       <nav class="navigation">
         <ul>
-          <li class="current_page_item"><a href="index.html">Home</a>
+          <li class="current_page_item"><a href="/">Home</a>
           </li>
-          <li class="ask_question"><a href="ask_question.html">Ask Question</a></li>
-          <li><a href="cat_question.html">Questions</a></li>
-
-          <li><a href="user_profile.html">Account</a>
-            <ul>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="user_profile.html">Profile</a></li>
-            </ul>
+          <li class="ask_question"><a href="{{route('ask')}}">Ask Question</a></li>
+          <li><a href="{{route('questions')}}">Questions</a></li>
+          <li>
+          @if (auth()->user() == null)
+            <a href="{{route('login')}}">Account</a>
+          @else
+            <a href="{{route('user.profile')}}">Account</a>
+              @endif
           </li>
         </ul>
       </nav>
@@ -137,21 +123,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="widget">
-            <h3 class="widget_title">Popular Questions</h3>
-            <ul class="related-posts">
-              <li class="related-item">
-                <h3><a href="#">This is my first Question</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
-                <div class="clear"></div><span>Feb 22, 2014</span>
-              </li>
-              <li class="related-item">
-                <h3><a href="#">This Is My Second Poll Question</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.</p>
-                <div class="clear"></div><span>Feb 22, 2014</span>
-              </li>
-            </ul>
-          </div>
+
         </div>
       </div><!-- End row -->
     </section><!-- End container -->

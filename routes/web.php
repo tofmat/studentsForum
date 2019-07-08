@@ -19,5 +19,12 @@ Route::get('/ask', 'Web\QuestionsController@new')->name('ask')
     ->middleware('auth');
 Route::post('/ask', 'Web\QuestionsController@create')->name('do-ask')
     ->middleware('auth');
+Route::get('/questions', 'Web\QuestionsController@index')->name('questions');
 Route::get('/question/{id}', 'Web\QuestionsController@view')->name('view-question');
+Route::post('/question/answer', 'Web\QuestionsController@addAnswer')
+    ->name('question.answer')
+    ->middleware('auth');
+
+Route::get('/feed', 'Web\UserController@feed')->name('feed');
+Route::get('/user/profile', 'Web\UserController@profile')->name('user.profile');
 

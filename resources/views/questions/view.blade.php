@@ -72,23 +72,27 @@
           </ol>
         </div>
 
+        @if (auth()->user() == null)
         <div id="respond" class="comment-respond page-content clearfix">
           <div class="boxedtitle page-title"><h2>Give an answer</h2></div>
-          <form action="#" method="post" id="commentform" class="comment-form">
+          <form action="{{route('question.answer')}}" method="post" id="commentform" class="comment-form">
 
             <div id="respond-textarea">
               <p>
                 <label class="required" for="comment">Answer<span>*</span></label>
-                <textarea id="comment" name="comment" aria-required="true" cols="58" rows="8"></textarea>
+                <textarea id="comment" name="answer" aria-required="true" cols="58" rows="6"></textarea>
               </p>
             </div>
+            <input name="question_id" value="{{$question->id}}" type="hidden"/>
             <p class="form-submit">
               <input name="submit" type="submit" id="submit" value="Post your answer" class="button small color">
             </p>
+            {{csrf_field()}}
           </form>
         </div>
+        @endif
         <div id="related-posts">
-          <h2>Related questions</h2>
+          <h2>Similar questions</h2>
           <ul class="related-posts">
             <li class="related-item"><h3><a href="#"><i class="icon-double-angle-right"></i>This Is My Second Poll Question</a></h3></li>
             <li class="related-item"><h3><a href="#"><i class="icon-double-angle-right"></i>This is my third Question</a></h3></li>
