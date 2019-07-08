@@ -61,4 +61,8 @@ class User extends Authenticatable
             return Course::whereIn('id', $courseIds)->get();
         }
     }
+
+    public function getFullName() {
+        return $this->surname." ".$this->other_names;
+    }
 }

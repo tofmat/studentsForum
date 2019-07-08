@@ -37,4 +37,13 @@ class QuestionsController extends Controller
         $question->save();
         return redirect()->route('view-question', ['id' => $question->id]);
     }
+
+    public function view($questionId) {
+        $question = Question::findOrFail($questionId);
+        $data = [
+            'question' => $question,
+            'answers' => $question->answers
+        ];
+        return view('questions.view', $data);
+    }
 }

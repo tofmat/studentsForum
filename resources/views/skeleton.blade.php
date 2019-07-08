@@ -7,10 +7,11 @@
   <title>Quest – @yield('title', "A Questions and Answers Platform")</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/skins/skins.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/skins/skins.css">
+  <link rel="stylesheet" href="/css/responsive.css">
   <link rel="shortcut icon" href="images/favicon.png">
 
 </head>
@@ -75,7 +76,6 @@
       <nav class="header-top-nav">
         <ul>
           <li><a href="#"><i class="icon-headphones"></i>Support</a></li>
-          <li><a href="login.html" id="login-panel"><i class="icon-user"></i>Login Area</a></li>
         </ul>
       </nav>
       <div class="header-search">
