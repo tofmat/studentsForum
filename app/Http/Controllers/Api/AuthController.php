@@ -5,14 +5,19 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
     public function login(Request $request) {
-        $request->validate([
+        $rules = [
             'reg_no' => 'string|required',
             'password' => 'string|required'
-        ]);
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            throw new \Exception();
+        }
         $credentials = $request->only(['reg_no', 'password']);
         if (!Auth::attempt($credentials)) {
             return $this->sendErrorResponse("Invalid reg number and/or password", 401);

@@ -10,13 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['namespace' => 'Web'], function() {
-    Route::get('/', 'SiteController@index')->name('home');
-    Route::get('login', 'AuthController@login')->name('login');
-    Route::post('login', 'AuthController@doLogin')->name('do-login');
 
-    Route::get('/ask', 'QuestionsController@new')->name('ask')
-        ->middleware('auth');
-    Route::post('/ask', 'QuestionsController@create')->name('do-ask')
-        ->middleware('auth');
-});
+Route::get('/', 'Web\SiteController@index')->name('home');
+Route::get('login', 'Web\AuthController@login')->name('login');
+Route::post('login', 'Web\AuthController@doLogin')->name('do-login');
+
+Route::get('/ask', 'Web\QuestionsController@new')->name('ask')
+    ->middleware('auth');
+Route::post('/ask', 'Web\QuestionsController@create')->name('do-ask')
+    ->middleware('auth');
+Route::get('/question/{id}', 'Web\QuestionsController@view')->name('view-question');
+
