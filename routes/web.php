@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'Web\SiteController@index')->name('home');
+Route::get('/popular', 'Web\SiteController@index')->name('popular');
+Route::get('/unanswered', 'Web\SiteController@index')->name('unanswered');
+Route::get('/recent', 'Web\SiteController@index')->name('recent');
 Route::get('login', 'Web\AuthController@login')->name('login');
 Route::post('login', 'Web\AuthController@doLogin')->name('do-login');
 
@@ -29,4 +32,5 @@ Route::get('/feed', 'Web\UserController@feed')->name('feed');
 Route::get('/user/profile', 'Web\UserController@profile')->name('user.profile');
 Route::get('/user/edit', 'Web\UserController@edit')->name('user.edit');
 Route::get('/user/update-courses', 'Web\UserController@updateCourses')->name('user.update-courses');
+Route::post('/user/update-courses', 'Web\UserController@saveCourses')->name('user.do-update-courses');
 

@@ -5,6 +5,7 @@
     <h3 class="widget_title">Login</h3>
     <div class="form-style form-style-2">
       <form action="{{route('login')}}" method="post">
+        {{csrf_field()}}
         <div class="form-inputs clearfix">
           <p>
             <select>
@@ -38,10 +39,12 @@
   @endif
   <div class="widget widget_tag_cloud">
     <h3 class="widget_title">Courses</h3>
-    @if (!$topCourses)
-    @foreach ($topCourses as $course)
-        <a href="#">{{$course->title}}</a>
-    @endforeach
+    @if (auth()->user() !== null)
+      @if (auth()->user()->getCourses() != null)
+        @foreach ($topCourses as $course)
+          <a href="#">{{$course->code}}</a>
+        @endforeach
+      @endif
     @endif
     <div class="register">
       <a class="button color small signup">View More</a>

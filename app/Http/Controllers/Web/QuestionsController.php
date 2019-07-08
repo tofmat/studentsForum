@@ -60,7 +60,8 @@ class QuestionsController extends BaseController
             $answer = new Answer([
                 'user_id' => auth()->user()->id,
                 'question_id' => $request->input('question_id'),
-                'answer' => $request->input('answer')
+                'answer' => $request->input('answer'),
+                'body' => "hello"
             ]);
             $answer->save();
             return redirect()->route('view-question', ['id' => $request->input('question_id')]);
@@ -69,8 +70,12 @@ class QuestionsController extends BaseController
 
     public function index() {
         $questions = Question::orderByDesc('id')->paginate(20);
+        $recentQuestions = Question::orderBy('id')->paginate(20);
+        $popularQuestions = Question::orderBy('title')->paginate(20);
         $data = [
-            'questions' => $questions
+            'questions' => $questions,
+            'recentQuestions' => $recentQuestions,
+            'popularQuestions' => $popularQuestions
         ];
         return view('questions.index', $data);
     }

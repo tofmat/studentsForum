@@ -8,8 +8,12 @@ class SiteController extends BaseController
 {
     public function index() {
         $questions = Question::orderByDesc('id')->paginate(20);
+        $recentQuestions = Question::orderBy('id')->paginate(20);
+        $popularQuestions = Question::orderBy('title')->paginate(20);
         $data = [
-            'questions' => $questions
+            'questions' => $questions,
+            'recentQuestions' => $recentQuestions,
+            'popularQuestions' => $popularQuestions
         ];
         return view('site.index', $data);
     }

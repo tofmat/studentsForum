@@ -40,22 +40,32 @@
     </div>
   </div><!-- End lost-password -->
 
+  @if (auth()->user() !== null)
   <div class="panel-pop" id="signup" style="overflow: auto; height: 300px;">
     <h2>List of Courses<i class="icon-remove"></i></h2>
     <div class="form-style form-style-3">
         <form action="{{route('user.update-courses')}}" method="post">
         @if (\App\Models\Course::all() != null)
           @foreach (\App\Models\Course::all() as $course)
+            @php
+            $subs = [];
+            $subscribedCourses = \App\Models\UsersCourse::where('user_id', '=', auth()->user()->id)->get();
+            if ($subscribedCourses != null) {
+              $subs = $subscribedCourses->pluck('course_id')->first;
+            }
+            @endphp
             <li class="related-item button" style="color: black;">
-              <input type="checkbox" name="courses[]" href="#" value="{{$course->id}}" />
+                <input type="checkbox" name="courses[]" value="{{$course->id}}" />
               {{$course->code}}
             </li>
           @endforeach
         @endif
+          {{csrf_field()}}
       <input type="submit" class="load-questions" value="Save" />
         </form>
     </div>
   </div><!-- End signup -->
+  @endif
 
 
   <div id="header-top">
@@ -84,7 +94,7 @@
           <li><a href="{{route('questions')}}">Questions</a></li>
           <li>
           @if (auth()->user() == null)
-            <a href="{{route('login')}}">Account</a>
+            <a href="{{route('login')}}">Login</a>
           @else
             <a href="{{route('user.profile')}}">Account</a>
               @endif

@@ -7,7 +7,7 @@
         <article class="question question-type-norm">
           <h2>{{$question->title}}</h2>
           <a class="question-report" href="#">{{$question->course->code}}</a>
-          <div class="question-type-main"><i class="icon-check"></i>Solved</div>
+          <div class="question-type-main"></div>
           <!-- Vote Shit -->
           <div class="vote-up">
             <div original-title="This answer is useful" class="question-author-vote tooltip-n" value="Increase Value" onClick="increaseValue()"><span></span><div id="increase"></div></div>
@@ -72,7 +72,7 @@
           </ol>
         </div>
 
-        @if (auth()->user() == null)
+        @if (auth()->user() != null)
         <div id="respond" class="comment-respond page-content clearfix">
           <div class="boxedtitle page-title"><h2>Give an answer</h2></div>
           <form action="{{route('question.answer')}}" method="post" id="commentform" class="comment-form">

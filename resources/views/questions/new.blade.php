@@ -50,7 +50,7 @@
               <div id="form-textarea">
                 <p>
                   <label class="required">Details<span>*</span></label>
-                  <textarea id="froala-editor" name="brief">Initialize the Froala WYSIWYG HTML Editor on a textarea.</textarea>									<span class="form-description">Type the description thoroughly and in detail .</span>
+                  <textarea id="froala-editor" name="brief"></textarea>									<span class="form-description">Type the description thoroughly and in detail .</span>
                 </p>
               </div>
               <p class="form-submit">
