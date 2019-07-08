@@ -1088,3 +1088,5 @@ function increaseValue() {
 	value--;
 	document.getElementById('number-vote').value = value;
   }
+
+   new FroalaEditor('textarea#froala-editor')

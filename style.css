@@ -819,7 +819,7 @@ div[class^="header_shadow"] {
   overflow: hidden;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 20px solid red;
+  border-bottom: 20px solid #21A654;
 }
 .question-author-vote {
   position: relative;
@@ -865,7 +865,7 @@ div[class^="header_shadow"] {
   overflow: hidden;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 20px solid red;
+  border-top: 20px solid #21A654;
 }
 .question-author-vote-down {
   position: relative;
