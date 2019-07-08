@@ -14,4 +14,9 @@ Route::group(['namespace' => 'Web'], function() {
     Route::get('/', 'SiteController@index')->name('home');
     Route::get('login', 'AuthController@login')->name('login');
     Route::post('login', 'AuthController@doLogin')->name('do-login');
+
+    Route::get('/ask', 'QuestionsController@new')->name('ask')
+        ->middleware('auth');
+    Route::post('/ask', 'QuestionsController@create')->name('do-ask')
+        ->middleware('auth');
 });

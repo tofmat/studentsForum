@@ -53,4 +53,12 @@ class User extends Authenticatable
         ];
         return $data;
     }
+
+    public function getCourses() {
+        $courseIds = UsersCourse::where('user_id', $this->id)->get();
+        if ($courseIds != null) {
+            $courseIds = $courseIds->pluck('course_id');
+            return Course::whereIn('id', $courseIds)->get();
+        }
+    }
 }
